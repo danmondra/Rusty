@@ -2,6 +2,8 @@ import RustyVacations from "../assets/rusty/rustyVacations.png"
 import More from "../assets/icons/more.png"
 import Add from "../assets/icons/add.png"
 
+import { OrganizationForm } from "./OrganizationForm"
+
 export function Organize() {
 
   return(
@@ -19,11 +21,7 @@ export function Organize() {
       '
     >
       <section className=''>
-        <form className="flex flex-col gap-3">
-          <label htmlFor="items" className="text-center block text-2xl text-white font-bold">Items to be organized</label>
-          <textarea id="items" name="items" className="w-full py-6 px-4 resize-none rounded-lg bg-[#ffffff40] placeholder-[#FFFFFF60] text-lg text-white outline-none border-2 border-transparent focus:border-white" rows="4" placeholder="Examples: Shampoo, hand soap, toothpaste, tomatoes, tomatoes, etc." required></textarea>
-          <input type="submit" value="Organize" className="text-2xl font-bold text-white p-3 rounded-lg w-full bg-[#0E1749] transition-[background-color, border] duration-500 cursor-pointer border-2 border-transparent hover:bg-[#0E174990] hover:border-white"/>
-        </form>
+        <OrganizationForm />
 
         <div className="">
           <h2 className="block text-2xl text-white font-bold max-w-prose pt-6 px-4">
