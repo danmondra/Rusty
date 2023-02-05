@@ -1,14 +1,44 @@
-export function OrganizationForm() {
+import { useState } from "react"
 
-  function handleOrganize(e) {
+import { classifyItems } from "../services/classifyItems.js"
+
+export function OrganizationForm() {
+  const [itemsToOrganize, setItemsToOrganize] = useState('')
+
+  async function handleOrganize(e) {
     e.preventDefault()
 
-    console.log('prueba')
+    const cleanItemsInput = itemsToOrganize.split(',').map((item) => item.trim().toLowerCase())
+    const classifiedItems = await classifyItems({itemsToOrganize: cleanItemsInput})
+
+    const cleanedData = classifiedItems.classifications.map(({input, prediction}) => {
+      return { item: input, prediction: prediction }
+    })
+
+    let departmentsAndItemsGroups = []
+
+    cleanedData.forEach(({item, prediction}) => {
+      if(departmentsAndItemsGroups.some(depa => depa.name === prediction)) {
+        const existingDepartmentPosition = departmentsAndItemsGroups.findIndex(depa => depa.name === prediction)
+
+        departmentsAndItemsGroups[existingDepartmentPosition].items.push(item)
+      } else {
+        departmentsAndItemsGroups.push({name: prediction, items: [item]})
+      }
+    })
+
+    console.log({cleanedData, departmentsAndItemsGroups})
+  }
+
+  function handleWrite(e) {
+    // TODO --- Verificar que no se introduzcan valores extraños
+    setItemsToOrganize(e.target.value)
   }
 
   return(
     <form
       className="flex flex-col gap-3"
+      onSubmit={handleOrganize}
     >
       <label
         htmlFor="items"
@@ -40,6 +70,7 @@ export function OrganizationForm() {
         border-2
         border-transparent
         focus:border-white"
+        onChange={handleWrite}
         required
       ></textarea>
       <input

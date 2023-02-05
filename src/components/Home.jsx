@@ -1,10 +1,10 @@
 import NotesVSRusty from '../assets/notesVSrusty.png'
 import RustyShopping from '../assets/rusty/rustyShopping.png'
 
-export function Home() {
+export function Home({setOrganizing}) {
 
   function handleClick() {
-
+    setOrganizing(true)
   }
 
   return (

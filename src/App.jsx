@@ -1,14 +1,25 @@
+import { useState } from "react"
+
 import { Waves } from "./components/Waves"
-import { Home } from "./components/Home.jsx"
 import { Organize } from "./components/Organize.jsx"
+import { Home } from "./components/Home"
 
 function App() {
+  const [organizing, setOrganizing] = useState(false)
 
   return (
     <>
       <Waves />
 
-      <Organize />
+      {organizing
+        ? <Organize
+            organizing={organizing}
+            setOrganizing={setOrganizing}
+          />
+        : <Home
+            setOrganizing={setOrganizing}
+          />
+      }
 
     </>
   )

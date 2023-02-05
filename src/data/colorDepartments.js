@@ -1,0 +1,20 @@
+export const departments = [
+  {name: "Dairy", color: "#636363" }, 
+  {name: "Fruits", color: "#A2A537" }, 
+  {name: "Vegetables", color: "#1B741F" }, 
+  {name: "Meat and food", color: "#BB6A20" }, 
+  {name: "Bakery and pastry", color: "#413225" }, 
+  {name: "Beverages and liquors", color: "#0F5761" }, 
+  {name: "Frozen food", color: "#3B9DAA" }, 
+  {name: "Household cleaning", color: "#316798" }, 
+  {name: "Pets", color: "#812872" }, 
+  {name: "Babies", color: "#B67A72" }, 
+  {name: "Pharmacy", color: "#5C1E16" }, 
+  {name: "Hygiene and Beauty", color: "#A67AB6" }, 
+  {name: "Electronics", color: "#1F4D50" }, 
+  {name: "Vehicle Supplies", color: "#871661" }, 
+  {name: "Decoration", color: "#487455"  }, 
+  {name: "Fashion", color: "#667448"  }, 
+  {name: "Toys and Sports", color: "#208B9A"  },
+  {name: "Snacks", color: "#2C3483" }
+]
