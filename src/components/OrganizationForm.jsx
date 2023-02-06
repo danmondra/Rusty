@@ -1,16 +1,15 @@
 import { useState } from "react"
-
 import { useOrganize } from "../hooks/useOrganize"
-
-import { classifyItems } from "../services/classifyItems.js"
 
 export function OrganizationForm({lists, setLists, actualList, setActualList}) {
   const [itemsToOrganize, setItemsToOrganize] = useState('')
   const [handleOrganize] = useOrganize({lists, setLists, actualList, setActualList})
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    handleOrganize({itemsToOrganize})
+    await handleOrganize({itemsToOrganize})
+
+    setItemsToOrganize('')
   }
 
   function handleWrite(e) {
@@ -53,6 +52,7 @@ export function OrganizationForm({lists, setLists, actualList, setActualList}) {
         border-2
         border-transparent
         focus:border-white"
+        value={itemsToOrganize}
         onChange={handleWrite}
         required
       ></textarea>

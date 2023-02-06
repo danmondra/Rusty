@@ -9,8 +9,8 @@ import { Department } from "./Department"
 
 export function Organize({setOrganizing}) {
 
-  const [lists, setLists] = useState(null ?? [ {name: "Shopping List", departments: []} ])
-  const [actualList, setActualList] = useState( lists[0] )
+  const [lists, setLists] = useState(JSON.parse(localStorage.getItem('lists')) ?? [ {name: "Shopping List", departments: []} ])
+  const [actualList, setActualList] = useState(JSON.parse(localStorage.getItem('actualList')) ?? lists[0] )
 
   return(
     <main
