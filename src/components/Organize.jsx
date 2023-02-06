@@ -47,7 +47,7 @@ export function Organize({setOrganizing}) {
         <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center col-start-1 col-end-3">
           Shopping list 
         </h2>
-        {false && <div className="col-start-1 col-end-3 my-20 grid place-items-center">
+        {!actualList.departments[0]?.items[0] && <div className="col-start-1 col-end-3 my-20 grid place-items-center">
           <h2 className="block text-2xl text-white font-regular max-w-[25rem] text-center">
             Add items for Rusty to get down to business
           </h2>
