@@ -14,7 +14,8 @@ export const colorDepartments = {
   "Electronics": "#1F4D50",
   "Vehicle Supplies": "#871661",
   "Decoration": "#487455",
-  "Fashion": "#667448",
+  "Fashion": "#8b2b5b",
   "Toys and Sports": "#208B9A",
   "Snacks": "#2C3483",
+  "Furniture": "#343434"
 }

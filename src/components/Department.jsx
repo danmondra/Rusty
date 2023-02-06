@@ -3,14 +3,21 @@ import { Item } from "./Item"
 import Extend from "../assets/icons/extend.png"
 
 import { colorDepartments } from "../data/colorDepartments"
+import {useEffect} from "react"
+
 
 export function Department({name, items}) {
   const departmentColor = colorDepartments[name]
 
+  useEffect(() => {
+    //TODO --- Crear grid masonry
+    //console.log(document.querySelectorAll('ul'))
+  }, [])
+
   return (
     <div>
       <header
-        className="flex justify-between  px-6 py-1 cursor-pointer"
+        className="flex justify-between px-6 py-1 cursor-pointer"
         style={{backgroundColor: departmentColor}}
       >
         <h3 className="text-white font-bold text-2xl">{name}</h3>
@@ -18,7 +25,7 @@ export function Department({name, items}) {
       </header>
 
       <ul
-        className="flex flex-col bg-[#1B741F80] text-white text-2xl font-regular rounded-b-lg py-2"
+        className="flex flex-col text-white text-2xl font-regular rounded-b-lg py-2"
         style={{
           backgroundColor: `${departmentColor}80`
         }}

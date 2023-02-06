@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         'nunito': ['Nunito', 'sans-serif']
       },
+      backgroundImage: {
+        "check": "url(/src/assets/icons/check.png)"
+      }
     },
   },
   plugins: [],

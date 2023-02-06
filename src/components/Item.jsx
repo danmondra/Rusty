@@ -17,12 +17,17 @@ export function Item({item, departmentName, departmentColor}) {
         h-6
         rounded
         border-white
-        checked:bg-[url(/src/assets/icons/check.png)]
+        checked:bg-check
         bg-center
-        bg-contain
-        checked:bg-[${departmentColor}]`}
+        bg-contain `}
+        style={{
+          backgroundColor: `${departmentColor}90`
+        }}
       />
-      <label htmlFor={item} className=" flex w-full justify-between items-center">
+      <label
+        htmlFor={item}
+        className="flex w-full justify-between items-center"
+      >
         {item}
         <button className="aspect-square w-[.8rem]">
           <img src={More} alt="Icon for more options" className="object-cover mx-auto"/>
