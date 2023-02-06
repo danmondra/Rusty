@@ -20,7 +20,6 @@ export function Home({setOrganizing}) {
       lg:flex-row
       gap-12
       lg:gap-7'
-      onClick={handleClick}
     >
       <div
         className='
@@ -47,7 +46,7 @@ export function Home({setOrganizing}) {
           className='
           bg-[#0E1749]
           w-full
-          md:w-4/5
+          md:w-[60%]
           mx-auto
           py-3
           text-4xl
@@ -60,6 +59,7 @@ export function Home({setOrganizing}) {
           border
           border-transparent
           hover:border-white'
+          onClick={handleClick}
         >
           Let's Start
         </button>

@@ -33,6 +33,8 @@ export function Organize({setOrganizing}) {
         <OrganizationForm
           lists={lists}
           setLists={setLists}
+          actualList={actualList}
+          setActualList={setActualList}
         />
 
         <Lists
@@ -52,9 +54,13 @@ export function Organize({setOrganizing}) {
           <img src={RustyVacations} alt="Rusty sunbathing on a towel" width="250px" height="250px" className="aspect-[440/500] w-[12rem]"/>
         </div>}
 
-        <Department
-          actualList={actualList}
-        />
+        {actualList.departments.map((department) => (
+          <Department
+            name={department.name}
+            items={department.items}
+            key={department.name}
+          />
+        ))}
 
       </section>
     </main>
