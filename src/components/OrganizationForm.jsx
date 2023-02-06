@@ -1,33 +1,16 @@
 import { useState } from "react"
 
+import { useOrganize } from "../hooks/useOrganize"
+
 import { classifyItems } from "../services/classifyItems.js"
 
-export function OrganizationForm() {
+export function OrganizationForm({lists, setLists, actualList, setActualList}) {
   const [itemsToOrganize, setItemsToOrganize] = useState('')
+  const [handleOrganize] = useOrganize({lists, setLists, actualList, setActualList})
 
-  async function handleOrganize(e) {
+  function handleSubmit(e) {
     e.preventDefault()
-
-    const cleanItemsInput = itemsToOrganize.split(',').map((item) => item.trim().toLowerCase())
-    const classifiedItems = await classifyItems({itemsToOrganize: cleanItemsInput})
-
-    const cleanedData = classifiedItems.classifications.map(({input, prediction}) => {
-      return { item: input, prediction: prediction }
-    })
-
-    let departmentsAndItemsGroups = []
-
-    cleanedData.forEach(({item, prediction}) => {
-      if(departmentsAndItemsGroups.some(depa => depa.name === prediction)) {
-        const existingDepartmentPosition = departmentsAndItemsGroups.findIndex(depa => depa.name === prediction)
-
-        departmentsAndItemsGroups[existingDepartmentPosition].items.push(item)
-      } else {
-        departmentsAndItemsGroups.push({name: prediction, items: [item]})
-      }
-    })
-
-    console.log({cleanedData, departmentsAndItemsGroups})
+    handleOrganize({itemsToOrganize})
   }
 
   function handleWrite(e) {
@@ -38,7 +21,7 @@ export function OrganizationForm() {
   return(
     <form
       className="flex flex-col gap-3"
-      onSubmit={handleOrganize}
+      onSubmit={handleSubmit}
     >
       <label
         htmlFor="items"
