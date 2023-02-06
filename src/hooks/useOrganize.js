@@ -49,7 +49,7 @@ export function useOrganize({lists, setLists, actualList, setActualList}) {
 
     setActualList({name: actualList.name, departments: groupsOfItems})
 
-    //TODO --- Agregar un useEffect diferente para que cada que cambie la lista se guarde en LocaL Storage
+    //TODO --- Verificar si hay artículos repetidos en la lista y poner x(N) según la cantidad
   }
 
   return [handleOrganize]

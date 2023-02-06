@@ -7,6 +7,7 @@ export function OrganizationForm({lists, setLists, actualList, setActualList}) {
 
   async function handleSubmit(e) {
     e.preventDefault()
+
     await handleOrganize({itemsToOrganize})
 
     setItemsToOrganize('')
@@ -51,6 +52,8 @@ export function OrganizationForm({lists, setLists, actualList, setActualList}) {
         outline-none
         border-2
         border-transparent
+        transtion-[border]
+        duration-300
         focus:border-white"
         value={itemsToOrganize}
         onChange={handleWrite}
