@@ -1,16 +1,21 @@
 import { useState } from "react"
 
-import RustyVacations from "../assets/rusty/rustyVacations.png"
-
 import { OrganizationForm } from "./OrganizationForm"
 import { BtnHome } from "./BtnHome"
 import { Lists } from "./Lists"
 import { Department } from "./Department"
 
-export function Organize({setOrganizing}) {
+import { RustyCoffee } from "./rusty/RustyCoffee"
+import { RustyRelax } from "./rusty/RustyRelax"
 
-  const [lists, setLists] = useState(JSON.parse(localStorage.getItem('lists')) ?? [ {name: "Shopping List", departments: []} ])
-  const [actualList, setActualList] = useState(JSON.parse(localStorage.getItem('actualList')) ?? lists[0] )
+export function Organize({setOrganizing}) {
+  const existingLists = JSON.parse(localStorage.getItem('lists'))
+  const existingActualList = JSON.parse(localStorage.getItem('actualList'))
+
+  const [lists, setLists] = useState(existingLists ?? [ {name: "Shopping List", departments: []} ])
+  const [actualList, setActualList] = useState(existingActualList ?? lists[0] )
+
+  const thereAreItems = Boolean(lists[0].departments[0]?.items[0])
 
   return(
     <main
@@ -43,16 +48,15 @@ export function Organize({setOrganizing}) {
         />
 
       </section>
-      <section className="col-start-2 col-end-4 grid grid-cols-2 gap-3 auto-rows-max">
+      <section className="col-start-2 col-end-4 grid grid-cols-2 gap-3 auto-rows-max relative">
         <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center col-start-1 col-end-3">
           Shopping list 
         </h2>
-        {!actualList.departments[0]?.items[0] && <div className="col-start-1 col-end-3 my-20 grid place-items-center">
-          <h2 className="block text-2xl text-white font-regular max-w-[25rem] text-center">
-            Add items for Rusty to get down to business
-          </h2>
-          <img src={RustyVacations} alt="Rusty sunbathing on a towel" width="250px" height="250px" className="aspect-[440/500] w-[12rem]"/>
-        </div>}
+
+        {thereAreItems
+          ? <RustyCoffee />
+          : <RustyRelax />
+        }
 
         {actualList.departments.map((department) => (
           <Department

@@ -1,5 +1,6 @@
+import { RustyShopping } from "./rusty/RustyShopping"
+
 import NotesVSRusty from '../assets/notesVSrusty.png'
-import RustyShopping from '../assets/rusty/rustyShopping.png'
 
 export function Home({setOrganizing}) {
 
@@ -74,17 +75,7 @@ export function Home({setOrganizing}) {
             className="mx-auto"
           />
         </picture>
-        <img
-          src={RustyShopping}
-          width="300px"
-          height="300px"
-          alt="Rusty carrying some grocery bags"
-          className="aspect-[500/414]
-          w-[40%]
-          mt-[-1.5rem]
-          md:mt-[-3.5rem]
-          ml-[3rem]"
-        />
+        <RustyShopping />
       </div>
     </main>
 
