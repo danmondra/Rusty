@@ -23,6 +23,8 @@ export function Lists({lists, setLists, actualList, setActualList}) {
           <List
             actualList={actualList}
             setActualList={setActualList}
+            lists={lists}
+            setLists={setLists}
             list={list}
             key={list?.name}
           />

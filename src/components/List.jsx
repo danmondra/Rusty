@@ -2,7 +2,7 @@ import {useOptionsMenu} from "../hooks/useOptionsMenu";
 
 import More from "../assets/icons/more.png"
 
-export function List({actualList, setActualList, list}) {
+export function List({actualList, setActualList, lists, setLists, list}) {
   const [OptionsMenu, handleOptions, showMenu] = useOptionsMenu()
 
   const {name} = list;
@@ -11,6 +11,21 @@ export function List({actualList, setActualList, list}) {
 
   function handleChangeList() {
     setActualList(list)
+  }
+
+  function handleDeleteList() {
+    const newLists = lists.filter(({name}) => name !== list.name)
+
+    if(newLists.length === 0) {
+      alert('Debe haber por lo menos una lisa')
+      return
+    }
+
+    setLists(newLists)
+
+    if(actualList.name === list.name) {
+      setActualList(lists[0])
+    }
   }
 
   return (
@@ -48,7 +63,7 @@ export function List({actualList, setActualList, list}) {
       </button>
       {showMenu && 
       <OptionsMenu
-        handleDelete={() => console.log('delete')}
+        handleDelete={handleDeleteList}
       />
       }
     </li>
