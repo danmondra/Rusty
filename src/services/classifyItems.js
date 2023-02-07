@@ -20,7 +20,7 @@ export async function classifyItems({itemsToOrganize}) {
 
     //TODO --- ERROR HANDLING
     if(response) {
-      console.log(response)
+      //console.log(response)
     }
 
     const data = await response.json()

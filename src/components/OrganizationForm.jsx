@@ -3,12 +3,15 @@ import { organize } from "../services/organize"
 
 export function OrganizationForm({actualList, setActualList}) {
   const [itemsToOrganize, setItemsToOrganize] = useState('')
+  const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
+    setLoading(true)
 
     await organize({actualList, setActualList, itemsToOrganize})
 
+    setLoading(false)
     setItemsToOrganize('')
   }
 
@@ -60,7 +63,7 @@ export function OrganizationForm({actualList, setActualList}) {
       ></textarea>
       <input
         type="submit"
-        value="Organize"
+        value={`${loading ? 'Organizing...' : 'Organize'}`}
         className="
         text-2xl
         font-bold
