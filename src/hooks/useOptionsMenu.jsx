@@ -1,5 +1,5 @@
-import { useState } from "react"
-import Trash from "../assets/icons/trash.png"
+import { useState } from 'react'
+import Trash from '../assets/icons/trash.png'
 
 export function useOptionsMenu() {
   const [showMenu, setShowMenu] = useState(false) 
@@ -9,7 +9,7 @@ export function useOptionsMenu() {
 
     function closeOptions(eventOutside) {
       // El menú solo se cierra cuando el click se da en un lugar diferente al que lo activó
-      const idOfItemTrigger = eventOutside.target.dataset.elementid;
+      const idOfItemTrigger = eventOutside.target.dataset.elementid
       if(idOfItemTrigger !== elementID) {
         setShowMenu(false)
         document.removeEventListener('click', closeOptions)

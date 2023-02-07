@@ -1,15 +1,25 @@
-import { List } from "./List"
+import { List } from './List'
 
-import Add from "../assets/icons/add.png"
+import Add from '../assets/icons/add.png'
 
 export function Lists({lists, setLists, actualList, setActualList}) {
 
   function handleNewList() {
     //TODO --- Crear alerta personalizada
-    const nameNewList = prompt('Pick name for the list')
-    const newList = {name: nameNewList, departments: []}
+    const nameNewList = prompt('Choose a name for the list')
 
-    setLists([...lists, newList])
+    const nameExists = lists.some(({name}) => name === nameNewList)
+
+    if(nameExists) {
+      alert('A list with this name already exists')
+      return
+    }
+
+    if(nameNewList) {
+      const newList = {name: nameNewList, departments: []}
+
+      setLists([...lists, newList])
+    }
   }
 
   return (

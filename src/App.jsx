@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { Waves } from "./components/Waves"
-import { Organize } from "./components/Organize.jsx"
-import { Home } from "./components/Home"
+import { Waves } from './components/Waves'
+import { Organize } from './components/Organize.jsx'
+import { Home } from './components/Home'
 
 function App() {
   const [organizing, setOrganizing] = useState(false)
@@ -13,12 +13,12 @@ function App() {
 
       {organizing
         ? <Organize
-            organizing={organizing}
-            setOrganizing={setOrganizing}
-          />
+          organizing={organizing}
+          setOrganizing={setOrganizing}
+        />
         : <Home
-            setOrganizing={setOrganizing}
-          />
+          setOrganizing={setOrganizing}
+        />
       }
 
     </>

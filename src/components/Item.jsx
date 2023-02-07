@@ -1,5 +1,5 @@
-import More from "../assets/icons/more.png"
-import {useOptionsMenu} from "../hooks/useOptionsMenu"
+import More from '../assets/icons/more.png'
+import {useOptionsMenu} from '../hooks/useOptionsMenu'
 
 export function Item({actualList, setActualList, item, items, departmentName, departmentColor}) {
 

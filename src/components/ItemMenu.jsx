@@ -1,4 +1,4 @@
-import Trash from "../assets/icons/trash.png"
+import Trash from '../assets/icons/trash.png'
 
 export function ItemMenu({actualList, setActualList, departmentName, items, item}) {
 

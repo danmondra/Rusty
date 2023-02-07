@@ -1,15 +1,13 @@
-import {useOptionsMenu} from "../hooks/useOptionsMenu";
-import { useWarning } from "../hooks/useWarning"
+import {useOptionsMenu} from '../hooks/useOptionsMenu'
+import { useWarning } from '../hooks/useWarning'
 
-import RustyExplosion from "../assets/rusty/rustyExplosion.png"
-
-import More from "../assets/icons/more.png"
+import More from '../assets/icons/more.png'
 
 export function List({actualList, setActualList, lists, setLists, list}) {
   const [OptionsMenu, handleOptions, showMenu] = useOptionsMenu()
-  const [Warning, showWarning, setShowWarning, response, setResponse] = useWarning();
+  const [Warning, showWarning, setShowWarning] = useWarning()
 
-  const {name} = list;
+  const {name} = list
 
   const listID = list.name.split(' ').join('')
 
@@ -20,26 +18,23 @@ export function List({actualList, setActualList, lists, setLists, list}) {
   function handleDeleteList() {
     setShowWarning(true)
 
-    if(response) {
-      const newLists = lists.filter(({name}) => name !== list.name)
+    const newLists = lists.filter(({name}) => name !== list.name)
 
-      setShowWarning(true)
+    if(newLists.length === 0) {
+      alert('Debe haber por lo menos una lisa')
+      setShowWarning(false)
 
-      if(newLists.length === 0) {
-        alert('Debe haber por lo menos una lisa')
-
-        return
-      }
-
-      setLists(newLists)
-
-      setTimeout(() => {
-        if(actualList.name === list.name) {
-          setActualList(lists[0])
-        }
-      })
-
+      return
     }
+
+    setLists(newLists)
+
+    setTimeout(() => {
+      if(actualList.name === list.name) {
+        setActualList(lists[0])
+      }
+    })
+
   }
 
   return (
@@ -77,14 +72,14 @@ export function List({actualList, setActualList, lists, setLists, list}) {
       </button>
       {showMenu && 
       <OptionsMenu
-        handleDelete={handleDeleteList}
+        handleDelete={() => setShowWarning(true)}
       />
       }
 
       {showWarning && 
         <Warning
-          handleOk={() => setResponse(true)}
-          handleCancel={() => setResponse(true)}
+          textOk={'Delete'}
+          handleOk={handleDeleteList}
         >
           <h2 className="text-3xl text-[#0e1749] font-bold text-center">
             Are you sure you want to delete the "Shopping list"?

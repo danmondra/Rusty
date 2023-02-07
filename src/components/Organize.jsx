@@ -1,15 +1,15 @@
-import { useUpdateLists } from "../hooks/useUpdateLists"
+import { useUpdateLists } from '../hooks/useUpdateLists'
 
-import { OrganizationForm } from "./OrganizationForm"
-import { BtnHome } from "./BtnHome"
-import { Lists } from "./Lists"
-import { Department } from "./Department"
+import { OrganizationForm } from './OrganizationForm'
+import { BtnHome } from './BtnHome'
+import { Lists } from './Lists'
+import { Department } from './Department'
 
-import { RustyCoffee } from "./rusty/RustyCoffee"
-import { RustyRelax } from "./rusty/RustyRelax"
+import { RustyCoffee } from './rusty/RustyCoffee'
+import { RustyRelax } from './rusty/RustyRelax'
 
 export function Organize({setOrganizing}) {
-  const [ lists, setLists, actualList, setActualList, updateLists ] = useUpdateLists()
+  const [ lists, setLists, actualList, setActualList ] = useUpdateLists()
 
   const thereAreItems = Boolean(actualList?.departments[0]?.items[0])
 

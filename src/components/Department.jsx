@@ -1,15 +1,15 @@
-import { Item } from "./Item"
+import { Item } from './Item'
 
-import Extend from "../assets/icons/extend.png"
+import Extend from '../assets/icons/extend.png'
 
-import { colorDepartments } from "../data/colorDepartments"
-import {useEffect, useState} from "react"
+import { colorDepartments } from '../data/colorDepartments'
+import {useEffect, useState} from 'react'
 
 
 export function Department({actualList, setActualList, department}) {
   const [expanded, setExpanded] = useState(true)
 
-  const {name, items} = department;
+  const {name, items} = department
   const departmentColor = colorDepartments[name]
 
   useEffect(() => {

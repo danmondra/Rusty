@@ -1,4 +1,4 @@
-import Home from "../assets/icons/home.png"
+import Home from '../assets/icons/home.png'
 
 export function BtnHome({setOrganizing}) {
 

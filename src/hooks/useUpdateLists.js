@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 export function useUpdateLists() {
   const existingLists = JSON.parse(localStorage.getItem('lists'))
   const existingActualList = JSON.parse(localStorage.getItem('actualList'))
 
-  const [lists, setLists] = useState(existingLists ?? [ {name: "Shopping List", departments: []} ])
+  const [lists, setLists] = useState(existingLists ?? [ {name: 'Shopping List', departments: []} ])
   const [actualList, setActualList] = useState(existingActualList ?? lists[0] )
 
   function updateLists() {

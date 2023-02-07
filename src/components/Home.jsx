@@ -1,4 +1,4 @@
-import { RustyShopping } from "./rusty/RustyShopping"
+import { RustyShopping } from './rusty/RustyShopping'
 
 import NotesVSRusty from '../assets/notesVSrusty.png'
 

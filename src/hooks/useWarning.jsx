@@ -1,12 +1,11 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import RustyExplosion from "../assets/rusty/rustyExplosion.png"
+import RustyExplosion from '../assets/rusty/rustyExplosion.png'
 
 export function useWarning() {
   const [showWarning, setShowWarning] = useState(false)
-  const [response, setResponse] = useState('')
 
-  function Warning({children, handleCancel, handleOk}) {
+  function Warning({children, textOk, handleOk}) {
     return (
       <div className="fixed top-0 right-0 bottom-0 left-0 z-10 bg-[#0e174930] grid place-items-center backdrop-blur-[2px]">
         <section
@@ -32,9 +31,8 @@ export function useWarning() {
                 border-transparent
                 duration-500
                 hover:opacity-80"
-                onClick={() => setResponse(true)}
-                
-              >Delete</button>
+                onClick={handleOk}
+              >{textOk}</button>
               <button 
                 className="
                 text-2xl
@@ -50,6 +48,7 @@ export function useWarning() {
                 transition-[border]
                 duration-500
                 hover:border-[#0E1749]"
+                onClick={() => setShowWarning(false)}
               >Cancel</button>
             </div>
           </div>
