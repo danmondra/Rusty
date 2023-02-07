@@ -22,9 +22,12 @@ export function useUpdateLists() {
     updateLists()
 
     localStorage.setItem('actualList', JSON.stringify(actualList))
-    localStorage.setItem('lists', JSON.stringify(lists))
   }, [actualList])
 
-  return [lists, actualList, setActualList, updateLists]
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(lists))
+  }, [lists])
+
+  return [lists, setLists, actualList, setActualList, updateLists]
 
 }

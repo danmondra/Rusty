@@ -9,10 +9,9 @@ import { RustyCoffee } from "./rusty/RustyCoffee"
 import { RustyRelax } from "./rusty/RustyRelax"
 
 export function Organize({setOrganizing}) {
-  const [ lists, actualList, setActualList, updateLists ] = useUpdateLists()
+  const [ lists, setLists, actualList, setActualList, updateLists ] = useUpdateLists()
 
   const thereAreItems = Boolean(actualList?.departments[0]?.items[0])
-
 
   return(
     <main
@@ -35,12 +34,13 @@ export function Organize({setOrganizing}) {
         <OrganizationForm
           actualList={actualList}
           setActualList={setActualList}
-          updateLists={updateLists}
         />
 
         <Lists
           lists={lists}
+          setLists={setLists}
           actualList={actualList}
+          setActualList={setActualList}
         />
 
       </section>
@@ -55,7 +55,7 @@ export function Organize({setOrganizing}) {
           : <RustyRelax />
         }
 
-        {actualList.departments.map((department) => (
+        {actualList?.departments?.map((department) => (
           <Department
             actualList={actualList}
             setActualList={setActualList}

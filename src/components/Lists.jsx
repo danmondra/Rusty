@@ -2,7 +2,17 @@ import { List } from "./List"
 
 import Add from "../assets/icons/add.png"
 
-export function Lists({lists, actualList}) {
+export function Lists({lists, setLists, actualList, setActualList}) {
+  console.log(lists)
+
+  function handleNewList() {
+    //TODO --- Crear alerta personalizada
+    const nameNewList = prompt('Pick name for the list')
+    const newList = {name: nameNewList, departments: []}
+
+    setLists([...lists, newList])
+  }
+
   return (
     <div className="">
       <h2 className="block text-2xl text-white font-bold max-w-prose pt-6 px-4">
@@ -12,9 +22,10 @@ export function Lists({lists, actualList}) {
 
         {lists.map((list) => (
           <List
-            lists={list}
             actualList={actualList}
-            key={list.name}
+            setActualList={setActualList}
+            list={list}
+            key={list?.name}
           />
         ))}
 
@@ -36,6 +47,7 @@ export function Lists({lists, actualList}) {
         hover:border-[#ffffff]
         rounded-xl
         transition-[border]"
+        onClick={handleNewList}
       >
         <span className="cursor-pointer">
           Create new list
