@@ -33,7 +33,7 @@ export function useOptionsMenu() {
         rounded-md
         overflow-hidden"
       >
-        <button
+        {false && <button
           className="
           px-4
           py-1
@@ -46,7 +46,7 @@ export function useOptionsMenu() {
           text-left"
         >
           Change
-        </button>
+        </button>}
         <button
           className="px-4
           py-1
