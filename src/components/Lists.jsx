@@ -3,7 +3,6 @@ import { List } from "./List"
 import Add from "../assets/icons/add.png"
 
 export function Lists({lists, setLists, actualList, setActualList}) {
-  console.log(lists)
 
   function handleNewList() {
     //TODO --- Crear alerta personalizada

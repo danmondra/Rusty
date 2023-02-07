@@ -2,7 +2,8 @@ import More from "../assets/icons/more.png"
 import {useOptionsMenu} from "../hooks/useOptionsMenu"
 
 export function Item({actualList, setActualList, item, items, departmentName, departmentColor}) {
-  const [OptionsMenu, handleOptions, showMenu] = useOptionsMenu({item})
+
+  const [OptionsMenu, handleOptions, showMenu] = useOptionsMenu()
 
   const itemID = item.split(' ').join('')
   const itemWithUppercase = item.charAt().toUpperCase() + item.slice(1)
@@ -61,9 +62,15 @@ export function Item({actualList, setActualList, item, items, departmentName, de
           {itemWithUppercase}
           <button
             className="aspect-square w-[1.3rem] moreBtn"
-            onClick={handleOptions}
+            data-elementid={itemID}
+            onClick={() => handleOptions(itemID)}
           >
-            <img src={More} alt="Icon for more options" className="object-cover mx-auto more"/>
+            <img
+              src={More}
+              alt="Icon for more options"
+              className="object-cover mx-auto more"
+              data-elementid={itemID}
+            />
           </button>
         </label>
 

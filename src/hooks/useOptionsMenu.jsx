@@ -1,20 +1,16 @@
 import { useState } from "react"
 import Trash from "../assets/icons/trash.png"
 
-export function useOptionsMenu({item}) {
+export function useOptionsMenu() {
   const [showMenu, setShowMenu] = useState(false) 
 
-  const itemID = item.split(' ').join('')
-
-  function handleOptions() {
+  function handleOptions(elementID) {
     setShowMenu(true)
 
     function closeOptions(eventOutside) {
-      const btnActual = document.querySelector(`input[id="${itemID}"] ~ label .moreBtn`)
-      const imageBtnActual = document.querySelector(`input[id=${itemID}] ~ label .more`)
-
       // El menú solo se cierra cuando el click se da en un lugar diferente al que lo activó
-      if(btnActual !== eventOutside.target && imageBtnActual !== eventOutside.target) {
+      const idOfItemTrigger = eventOutside.target.dataset.elementid;
+      if(idOfItemTrigger !== elementID) {
         setShowMenu(false)
         document.removeEventListener('click', closeOptions)
       }

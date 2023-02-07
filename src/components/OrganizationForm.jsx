@@ -7,7 +7,6 @@ export function OrganizationForm({actualList, setActualList}) {
   async function handleSubmit(e) {
     e.preventDefault()
 
-    console.log('prueba')
     await organize({actualList, setActualList, itemsToOrganize})
 
     setItemsToOrganize('')
