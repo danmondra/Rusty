@@ -6,9 +6,10 @@ import { colorDepartments } from "../data/colorDepartments"
 import {useEffect, useState} from "react"
 
 
-export function Department({name, items}) {
+export function Department({actualList, setActualList, department}) {
   const [expanded, setExpanded] = useState(true)
 
+  const {name, items} = department;
   const departmentColor = colorDepartments[name]
 
   useEffect(() => {
@@ -25,9 +26,9 @@ export function Department({name, items}) {
       >
         <h3 className="text-white font-bold text-2xl">{name}</h3>
         <img
-        src={Extend}
-        alt="Icon for expand list of items"
-        className="aspect-[22/11] object-contain transtion-[transform] duration-200"
+          src={Extend}
+          alt="Icon for expand list of items"
+          className="aspect-[22/11] object-contain transtion-[transform] duration-200"
           style={{
             transform: `${expanded ? 'rotate(180deg)' : 'unset' }`
           }}
@@ -44,7 +45,10 @@ export function Department({name, items}) {
       >
         {items.map((item, i) => (
           <Item
+            actualList={actualList}
+            setActualList={setActualList}
             item={item}
+            items={items}
             departmentName={name}
             departmentColor={departmentColor}
             key={item+i}
@@ -52,6 +56,5 @@ export function Department({name, items}) {
         ))}
       </ul>
     </div>
-
   )
 }

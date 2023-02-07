@@ -4,22 +4,22 @@ import {ItemOptions} from "./ItemOptions"
 
 import More from "../assets/icons/more.png"
 
-export function Item({item, departmentName, departmentColor}) {
-  const [showOptions, setShowOptions] = useState(false) 
+export function Item({actualList, setActualList, item, items, departmentName, departmentColor}) {
+  const [showMenu, setShowMenu] = useState(false) 
 
   const itemID = item.split(' ').join('')
   const itemWithUppercase = item.charAt().toUpperCase() + item.slice(1)
 
   function handleOptions() {
-    setShowOptions(true)
+    setShowMenu(true)
 
     function closeOptions(eventOutside) {
       const btnActual = document.querySelector(`input[id="${itemID}"] ~ label .moreBtn`)
       const imageBtnActual = document.querySelector(`input[id=${itemID}] ~ label .more`)
 
-      // El menú solo se cierra cuando el click no se da en el botón que lo activó
+      // El menú solo se cierra cuando el click se da en un lugar diferente al que lo activó
       if(btnActual !== eventOutside.target && imageBtnActual !== eventOutside.target) {
-        setShowOptions(false)
+        setShowMenu(false)
         document.removeEventListener('click', closeOptions)
       }
     }
@@ -64,7 +64,15 @@ export function Item({item, departmentName, departmentColor}) {
           </button>
         </label>
 
-        {showOptions && <ItemOptions />}
+        {showMenu && 
+        <ItemOptions
+          actualList={actualList}
+          setActualList={setActualList}
+          departmentName={departmentName}
+          items={items}
+          item={item}
+        />
+        }
       </li>
     </>
   )

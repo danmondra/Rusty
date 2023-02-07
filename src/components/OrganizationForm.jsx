@@ -1,14 +1,14 @@
 import { useState } from "react"
-import { useOrganize } from "../hooks/useOrganize"
+import { organize } from "../services/organize"
 
-export function OrganizationForm({lists, setLists, actualList, setActualList}) {
+export function OrganizationForm({actualList, setActualList}) {
   const [itemsToOrganize, setItemsToOrganize] = useState('')
-  const [handleOrganize] = useOrganize({lists, setLists, actualList, setActualList})
 
   async function handleSubmit(e) {
     e.preventDefault()
 
-    await handleOrganize({itemsToOrganize})
+    console.log('prueba')
+    await organize({actualList, setActualList, itemsToOrganize})
 
     setItemsToOrganize('')
   }

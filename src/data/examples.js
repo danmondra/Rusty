@@ -74,6 +74,7 @@ export const examples = [
   {"label": "Hygiene and Beauty", "text": "body soap"},
   {"label": "Hygiene and Beauty", "text": "shampoo"},
   {"label": "Hygiene and Beauty", "text": "cosmetics"},
+  {"label": "Hygiene and Beauty", "text": "toothpaste"},
   {"label": "Electronics", "text": "refrigerator"},
   {"label": "Electronics", "text": "television"},
   {"label": "Electronics", "text": "microwave"},

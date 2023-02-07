@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useUpdateLists } from "../hooks/useUpdateLists"
 
 import { OrganizationForm } from "./OrganizationForm"
 import { BtnHome } from "./BtnHome"
@@ -9,13 +9,10 @@ import { RustyCoffee } from "./rusty/RustyCoffee"
 import { RustyRelax } from "./rusty/RustyRelax"
 
 export function Organize({setOrganizing}) {
-  const existingLists = JSON.parse(localStorage.getItem('lists'))
-  const existingActualList = JSON.parse(localStorage.getItem('actualList'))
+  const [ lists, actualList, setActualList, updateLists ] = useUpdateLists()
 
-  const [lists, setLists] = useState(existingLists ?? [ {name: "Shopping List", departments: []} ])
-  const [actualList, setActualList] = useState(existingActualList ?? lists[0] )
+  const thereAreItems = Boolean(actualList?.departments[0]?.items[0])
 
-  const thereAreItems = Boolean(lists[0].departments[0]?.items[0])
 
   return(
     <main
@@ -31,15 +28,14 @@ export function Organize({setOrganizing}) {
       lg:gap-7
       '
     >
-      <section className=''>
+      <section>
         <BtnHome
           setOrganizing={setOrganizing}
         />
         <OrganizationForm
-          lists={lists}
-          setLists={setLists}
           actualList={actualList}
           setActualList={setActualList}
+          updateLists={updateLists}
         />
 
         <Lists
@@ -48,6 +44,7 @@ export function Organize({setOrganizing}) {
         />
 
       </section>
+
       <section className="col-start-2 col-end-4 grid grid-cols-2 gap-3 auto-rows-max relative">
         <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center col-start-1 col-end-3">
           Shopping list 
@@ -60,8 +57,9 @@ export function Organize({setOrganizing}) {
 
         {actualList.departments.map((department) => (
           <Department
-            name={department.name}
-            items={department.items}
+            actualList={actualList}
+            setActualList={setActualList}
+            department={department}
             key={department.name}
           />
         ))}
