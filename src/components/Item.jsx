@@ -1,30 +1,33 @@
-import { useState } from "react"
-
-import {ItemOptions} from "./ItemOptions"
-
 import More from "../assets/icons/more.png"
+import {useOptionsMenu} from "../hooks/useOptionsMenu"
 
 export function Item({actualList, setActualList, item, items, departmentName, departmentColor}) {
-  const [showMenu, setShowMenu] = useState(false) 
+  const [OptionsMenu, handleOptions, showMenu] = useOptionsMenu({item})
 
   const itemID = item.split(' ').join('')
   const itemWithUppercase = item.charAt().toUpperCase() + item.slice(1)
 
-  function handleOptions() {
-    setShowMenu(true)
+  function handleDeleteItem() {
 
-    function closeOptions(eventOutside) {
-      const btnActual = document.querySelector(`input[id="${itemID}"] ~ label .moreBtn`)
-      const imageBtnActual = document.querySelector(`input[id=${itemID}] ~ label .more`)
+    const newItems = items.filter(itemList => itemList !== item)
 
-      // El menú solo se cierra cuando el click se da en un lugar diferente al que lo activó
-      if(btnActual !== eventOutside.target && imageBtnActual !== eventOutside.target) {
-        setShowMenu(false)
-        document.removeEventListener('click', closeOptions)
-      }
+    // Si no hay items se elmina el departamento
+    if(newItems.length === 0) {
+      const newDepartmentsFiltered = actualList.departments.filter(department => department.name !== departmentName)
+
+      setActualList({name: actualList.name, departments: newDepartmentsFiltered})
+
+      return
     }
 
-    document.addEventListener('click', closeOptions)
+    const newDepartments = actualList.departments.map(department => {
+      if(department.name === departmentName) {
+        return newItems.length ? {name: department.name, items: newItems} : null
+      }
+      return department
+    })
+
+    setActualList({name: actualList.name, departments: newDepartments})
   }
 
   return (
@@ -65,12 +68,8 @@ export function Item({actualList, setActualList, item, items, departmentName, de
         </label>
 
         {showMenu && 
-        <ItemOptions
-          actualList={actualList}
-          setActualList={setActualList}
-          departmentName={departmentName}
-          items={items}
-          item={item}
+        <OptionsMenu
+          handleDelete={handleDeleteItem}
         />
         }
       </li>

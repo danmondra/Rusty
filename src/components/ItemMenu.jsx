@@ -1,6 +1,6 @@
 import Trash from "../assets/icons/trash.png"
 
-export function ItemOptions({actualList, setActualList, departmentName, items, item}) {
+export function ItemMenu({actualList, setActualList, departmentName, items, item}) {
 
   function handleChange() {
 
