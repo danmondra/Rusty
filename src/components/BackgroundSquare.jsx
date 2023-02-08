@@ -1,4 +1,4 @@
-export function BackgroundBubble({ position, width, color, zindex }) {
+export function BackgroundSquare({ position, width, color, zindex }) {
 
   return (
       <div

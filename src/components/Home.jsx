@@ -39,13 +39,13 @@ export function Home({setOrganizing}) {
           md:text-5xl
           font-bold'
         >
-          Rusty <span className='text-[#0E1749]'> is a </span>
+          Rusty <span className='text-[#2d31c8]'> is a </span>
           compulsive raccoon organizer
         </h1>
         <p className='text-2xl'>It will help you group each item on your shopping list according to the department to which it belongs.</p>
         <button
           className='
-          bg-[#0E1749]
+          bg-[#2d31c8]
           w-full
           md:w-[60%]
           mx-auto
@@ -53,9 +53,8 @@ export function Home({setOrganizing}) {
           text-4xl
           font-bold
           rounded-lg
-          hover:bg-[#0E174990]
-          transition-[background-color
-          border]
+          hover:bg-[#2d31c850]
+          transition-[background-color border]
           duration-500
           border
           border-transparent

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Waves } from './components/Waves'
+import { BackgroundBlur } from './components/BackgroundBlur'
 import { Organize } from './components/Organize.jsx'
 import { Home } from './components/Home'
 
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Waves />
+      <BackgroundBlur />
 
       {organizing
         ? <Organize

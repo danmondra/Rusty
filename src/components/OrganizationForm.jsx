@@ -71,13 +71,13 @@ export function OrganizationForm({actualList, setActualList}) {
         p-3
         rounded-lg
         w-full
-        bg-[#0E1749]
+        bg-[#2d31c8]
         transition-[background-color, border]
         duration-500
         cursor-pointer
         border-2
         border-transparent
-        hover:bg-[#0E174990]
+        hover:bg-[#2d31c850]
         hover:border-white"/>
     </form>
   )

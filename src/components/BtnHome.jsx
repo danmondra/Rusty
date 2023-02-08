@@ -8,7 +8,7 @@ export function BtnHome({setOrganizing}) {
 
   return (
     <button
-      className="absolute top-0 left-0 "
+      className="absolute top-2 left-2"
       onClick={handleHome}
     >
       <img src={Home} alt="Icon for go to first page" className="aspect-square w-12 m-3"/>

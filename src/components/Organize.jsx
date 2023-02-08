@@ -18,13 +18,13 @@ export function Organize({setOrganizing}) {
       className='
       w-[90%]
       mx-auto
-      max-w-5xl
+      max-w-6xl
       py-24
       md:py-24
       md:grid
-      md:grid-cols-3
+      md:grid-cols-[1fr_2fr]
       gap-12
-      lg:gap-7
+      lg:gap-16
       '
     >
       <section>
@@ -45,7 +45,7 @@ export function Organize({setOrganizing}) {
 
       </section>
 
-      <section className="col-start-2 col-end-4 grid grid-cols-2 gap-3 auto-rows-max relative">
+      <section className="grid grid-cols-2 gap-3 auto-rows-max relative">
         <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center col-start-1 col-end-3">
           {actualList?.name}
         </h2>
