@@ -29,11 +29,9 @@ export function List({actualList, setActualList, lists, setLists, list}) {
 
     setLists(newLists)
 
-    setTimeout(() => {
-      if(actualList.name === list.name) {
-        setActualList(lists[0])
-      }
-    })
+    if(actualList.name === list.name) {
+      setActualList(newLists[0])
+    }
 
   }
 

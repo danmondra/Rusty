@@ -47,7 +47,7 @@ export function Organize({setOrganizing}) {
 
       <section className="col-start-2 col-end-4 grid grid-cols-2 gap-3 auto-rows-max relative">
         <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center col-start-1 col-end-3">
-          Shopping list 
+          {actualList?.name}
         </h2>
 
         {thereAreItems

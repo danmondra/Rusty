@@ -19,6 +19,7 @@ export function useUpdateLists() {
   }
 
   useEffect(() => {
+    console.log('desde use effect')
     updateLists()
 
     localStorage.setItem('actualList', JSON.stringify(actualList))
