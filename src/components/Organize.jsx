@@ -45,8 +45,8 @@ export function Organize({setOrganizing}) {
 
       </section>
 
-      <section className="grid grid-cols-2 gap-3 auto-rows-max relative">
-        <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center col-start-1 col-end-3">
+      <section className="mt-16 lg:mt-0 grid md:grid-cols-2 gap-3 auto-rows-max relative">
+        <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center md:col-start-1 md:col-end-3">
           {actualList?.name}
         </h2>
 
@@ -55,14 +55,38 @@ export function Organize({setOrganizing}) {
           : <RustyRelax />
         }
 
-        {actualList?.departments?.map((department) => (
-          <Department
-            actualList={actualList}
-            setActualList={setActualList}
-            department={department}
-            key={department.name}
-          />
-        ))}
+        <div className='w-full flex flex-col gap-3'>
+          {actualList?.departments?.map((department, i) => {
+            if(i % 2 === 0) {
+              return (
+                <Department
+                  actualList={actualList}
+                  setActualList={setActualList}
+                  department={department}
+                  key={department.name}
+                />
+              )
+
+            }
+          })}
+
+        </div>
+        <div className='w-full flex flex-col gap-3'>
+          {actualList?.departments?.map((department, i) => {
+            if(i % 2 !== 0) {
+              return (
+                <Department
+                  actualList={actualList}
+                  setActualList={setActualList}
+                  department={department}
+                  key={department.name}
+                />
+              )
+
+            }
+          })}
+
+        </div>
 
       </section>
     </main>

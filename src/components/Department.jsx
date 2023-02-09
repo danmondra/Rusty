@@ -3,7 +3,7 @@ import { Item } from './Item'
 import Extend from '../assets/icons/extend.png'
 
 import { colorDepartments } from '../data/colorDepartments'
-import {useEffect, useState} from 'react'
+import { useState} from 'react'
 
 
 export function Department({actualList, setActualList, department}) {
@@ -11,11 +11,6 @@ export function Department({actualList, setActualList, department}) {
 
   const {name, items} = department
   const departmentColor = colorDepartments[name]
-
-  useEffect(() => {
-    //TODO --- Crear grid masonry
-    //console.log(document.querySelectorAll('ul'))
-  }, [])
 
   return (
     <div>
