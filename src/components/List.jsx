@@ -1,11 +1,12 @@
 import {useOptionsMenu} from '../hooks/useOptionsMenu'
-import { useWarning } from '../hooks/useWarning'
+import { useModal, BtnModal } from '../hooks/useModal'
 
 import More from '../assets/icons/more.png'
+import RustyExplosion from '../assets/rusty/rustyExplosion.png'
 
 export function List({actualList, setActualList, lists, setLists, list}) {
   const [OptionsMenu, handleOptions, showMenu] = useOptionsMenu()
-  const [Warning, showWarning, setShowWarning] = useWarning()
+  const [Modal, modal, setModal] = useModal()
 
   const {name} = list
 
@@ -16,13 +17,13 @@ export function List({actualList, setActualList, lists, setLists, list}) {
   }
 
   function handleDeleteList() {
-    setShowWarning(true)
+    setModal(true)
 
     const newLists = lists.filter(({name}) => name !== list.name)
 
     if(newLists.length === 0) {
       alert('Debe haber por lo menos una lisa')
-      setShowWarning(false)
+      setModal(false)
 
       return
     }
@@ -32,7 +33,6 @@ export function List({actualList, setActualList, lists, setLists, list}) {
     if(actualList.name === list.name) {
       setActualList(newLists[0])
     }
-
   }
 
   return (
@@ -70,20 +70,30 @@ export function List({actualList, setActualList, lists, setLists, list}) {
       </button>
       {showMenu && 
       <OptionsMenu
-        handleDelete={() => setShowWarning(true)}
+        handleDelete={() => setModal(true)}
       />
       }
 
-      {showWarning && 
-        <Warning
-          textOk={'Delete'}
-          handleOk={handleDeleteList}
+      {modal && 
+        <Modal
+          text={`Are you sure you want to delete the "${list.name}" list?`}
+          textBtn={'Delete'}
+          image={RustyExplosion}
         >
-          <h2 className="text-3xl text-[#0e1749] font-bold text-center">
-            Are you sure you want to delete the "Shopping list"?
-          </h2>
+          <div className="flex-1 flex flex-col justify-center gap-2">
+            <BtnModal
+              color={"#2d31c8"}
+              handleClick={handleDeleteList}
+              text={'Delete'}
+            />
 
-        </Warning>
+            <BtnModal
+              color={"transparent"}
+              handleClick={() => setModal(false)}
+              text={"Cancel"}
+            />
+          </div>
+        </Modal>
       }
     </li>
   )
