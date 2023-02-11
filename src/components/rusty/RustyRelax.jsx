@@ -12,7 +12,7 @@ export function RustyRelax() {
         alt="Rusty sunbathing on a towel"
         width="250px"
         height="250px"
-        className="aspect-[440/500] w-[12rem]"/>
+        className="aspect-[440/500] w-[12rem] mx-auto"/>
     </div>
   )
 }
