@@ -9,13 +9,16 @@ export function useMenu() {
 
     setTimeout(() => {
       const menu = document.querySelector('#organizationMenu')
+
       menu.style.right = "0"
       menu.querySelector('textarea').focus()
 
       function closeMenu(eventDocument) {
-        if(eventDocument.target !== menu || !menu.children.contains(eventDocument.target)) {
-          menu.style.right = "-100%"
+        console.log('0')
+        // Si se da click fuera del menú, se cierra
+        if(eventDocument.target !== menu && !menu.contains(eventDocument.target)) {
           document.removeEventListener('click', closeMenu)
+          menu.style.right = "-100%"
 
           setTimeout(() => {
             setMenu(false)
