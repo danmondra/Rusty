@@ -23,6 +23,7 @@ export function OrganizationForm({actualList, setActualList}) {
   return(
     <form
       className="flex flex-col gap-3"
+      id="formOrganization"
       onSubmit={handleSubmit}
     >
       <label
