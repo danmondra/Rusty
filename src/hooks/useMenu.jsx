@@ -9,7 +9,7 @@ export function useMenu() {
 
     // Si el click es en el botón organizar o fuera del menú, se cierra.
     // Si el click es una opción de la lista no se cierra
-    
+
     const btnSubmit = document.querySelector('#btnOrganize')
 
     const isMenu = event.target === menu || menu.contains(event.target)
@@ -44,7 +44,7 @@ export function useMenu() {
   function BtnMenu() {
 
     return(
-      <div className='fixed bottom-0 left-0 m-6'>
+      <div className='fixed bottom-0 left-0 m-6 z-10'>
         <button
           className='
           block
