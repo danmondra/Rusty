@@ -90,6 +90,7 @@ export function Lists({lists, setLists, actualList, setActualList}) {
               ref={newListRef}
               className='
               bg-[#ffffff40]
+              w-full
               text-lg
               font-bold
               border-2

@@ -54,9 +54,10 @@ export function useModal() {
         right-0
         bottom-0
         left-0
-        z-10
+        z-20
         bg-[#0e174930]
         backdrop-blur-[2px]
+        w-full
         "
         onClick={(e) => {
           if(e.target === e.currentTarget) {
@@ -82,7 +83,11 @@ export function useModal() {
           opacity-0
           scale-90
           overflow-hidden
-          flex"
+          flex-col
+          flex
+          md:flex-row
+          z-30
+          "
           id="modalSection"
         >
           <div className='absolute w-full h-full top-0 left-0 z-[-1] opacity-40 blur-[70px]'>
@@ -97,11 +102,11 @@ export function useModal() {
               color={"#237811"}
             />
           </div>
-          <picture className='min-w-[12rem] mx-auto aspect-square flex items-center'>
+          <picture className='max-w-[6rem] md:max-w-[unset] md:min-w-[12rem] mx-auto aspect-square flex items-center'>
             <img src={image} alt="" className="object-contain "/>
           </picture>
-          <div className="md:flex gap-6 justify-center mt-3 flex-col">
-            <h2 className="text-2xl text-white font-bold text-center min-w-[28rem]">{text} </h2>
+          <div className="flex gap-6 justify-center flex-col">
+            <h2 className="text-xl md:text-2xl text-white font-bold text-center md:min-w-[28rem]">{text} </h2>
             {children}
           </div>
         </section>
