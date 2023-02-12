@@ -16,8 +16,6 @@ export function useMenu() {
     const isOption = event.target.classList.contains('option')
     const isBtnSubmit = event.target === btnSubmit
 
-    console.log(isOption)
-
     if(!isMenu && !isOption || isBtnSubmit) {
       document.removeEventListener('click', closeMenu)
       menu.style.right = "-100%"

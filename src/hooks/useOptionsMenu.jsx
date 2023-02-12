@@ -67,7 +67,7 @@ export function useOptionsMenu() {
           onClick={handleDelete}
         >
           Delete
-          <img src={Trash} alt="Icon from Trash" width="21px" height="25px"/>
+          <img src={Trash} alt="Icon from Trash" width="21px" height="25px" className='option'/>
         </button>
       </div>
 
