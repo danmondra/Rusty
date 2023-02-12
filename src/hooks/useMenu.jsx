@@ -4,7 +4,31 @@ export function useMenu() {
   const isPhone = window.innerWidth > 768
   const [menu, setMenu] = useState(isPhone)
 
-  function handleMenu() {
+  function closeMenu(event) {
+    const menu = document.querySelector('#organizationMenu')
+
+    // Si el click es en el botón organizar o fuera del menú, se cierra.
+    // Si el click es una opción de la lista no se cierra
+    
+    const btnSubmit = document.querySelector('#btnOrganize')
+
+    const isMenu = event.target === menu || menu.contains(event.target)
+    const isOption = event.target.classList.contains('option')
+    const isBtnSubmit = event.target === btnSubmit
+
+    console.log(isOption)
+
+    if(!isMenu && !isOption || isBtnSubmit) {
+      document.removeEventListener('click', closeMenu)
+      menu.style.right = "-100%"
+
+      setTimeout(() => {
+        setMenu(false)
+      }, 100)
+    }
+  }
+
+  function handleClick() {
     setMenu(true)
 
     setTimeout(() => {
@@ -12,19 +36,6 @@ export function useMenu() {
 
       menu.style.right = "0"
       menu.querySelector('textarea').focus()
-
-      function closeMenu(eventDocument) {
-        console.log('0')
-        // Si se da click fuera del menú, se cierra
-        if(eventDocument.target !== menu && !menu.contains(eventDocument.target)) {
-          document.removeEventListener('click', closeMenu)
-          menu.style.right = "-100%"
-
-          setTimeout(() => {
-            setMenu(false)
-          }, 100)
-        }
-      }
 
       document.addEventListener('click', closeMenu)
     }, 100)
@@ -53,7 +64,7 @@ export function useMenu() {
           aspect-square
           w-[4rem]
           '
-          onClick={handleMenu}
+          onClick={handleClick}
         >
           +
         </button>
@@ -61,5 +72,5 @@ export function useMenu() {
     )
   }
 
-  return [BtnMenu, menu]
+  return [BtnMenu, menu ]
 }

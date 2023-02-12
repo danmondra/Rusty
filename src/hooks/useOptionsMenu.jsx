@@ -35,6 +35,7 @@ export function useOptionsMenu() {
       >
         {false && <button
           className="
+          option
           px-4
           py-1
           block
@@ -48,7 +49,9 @@ export function useOptionsMenu() {
           Change
         </button>}
         <button
-          className="px-4
+          className="
+          option
+          px-4
           py-1
           flex
           justify-between

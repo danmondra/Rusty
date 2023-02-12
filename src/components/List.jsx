@@ -39,6 +39,7 @@ export function List({actualList, setActualList, lists, setLists, list}) {
     <li className="relative w-full flex justify-between items-start gap-3">
       <span
         className="
+        list
         transition-[color text-decoration-color]
         duration-500
         decoration-transparent
@@ -53,7 +54,9 @@ export function List({actualList, setActualList, lists, setLists, list}) {
         {name} 
       </span>
       <button
-        className="aspect-square
+        className="
+        option
+        aspect-square
         w-[1.9rem]
         transition-[opacity]
         duration-500
@@ -64,7 +67,7 @@ export function List({actualList, setActualList, lists, setLists, list}) {
         <img
           src={More}
           alt="Icon for more options"
-          className="mx-auto"
+          className="mx-auto option"
           data-elementid={listID}
         />
       </button>

@@ -27,7 +27,7 @@ export function OrganizationForm({actualList, setActualList}) {
       onSubmit={handleSubmit}
     >
       <label
-        htmlFor="items"
+        htmlFor="organize"
         className="
         text-center
         block
@@ -38,7 +38,7 @@ export function OrganizationForm({actualList, setActualList}) {
         Items to be organized
       </label>
       <textarea
-        id="items"
+        id="organize"
         name="items"
         placeholder="Examples: Shampoo, hand soap, toothpaste, tomatoes, tomatoes, etc."
         rows="4"
@@ -64,6 +64,7 @@ export function OrganizationForm({actualList, setActualList}) {
       ></textarea>
       <input
         type="submit"
+        id="btnOrganize"
         value={`${loading ? 'Organizing...' : 'Organize'}`}
         className="
         text-2xl

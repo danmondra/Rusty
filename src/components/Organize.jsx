@@ -21,7 +21,7 @@ export function Organize({setOrganizing}) {
       w-[90%]
       mx-auto
       max-w-6xl
-      py-24
+      py-8
       md:py-24
       md:grid
       md:grid-cols-[1fr_2fr]
@@ -75,7 +75,7 @@ export function Organize({setOrganizing}) {
         : <BtnMenu />
       }
 
-      <section className="mt-16 lg:mt-0 md:grid md:grid-cols-2 gap-3 auto-rows-max relative">
+      <section className="mt-16 flex flex-col lg:mt-0 md:grid md:grid-cols-2 gap-3 auto-rows-max relative">
         <h2 className="h-max block text-2xl text-white font-bold max-w-prose text-center md:col-start-1 md:col-end-3">
           {actualList?.name}
         </h2>

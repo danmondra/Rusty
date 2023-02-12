@@ -33,7 +33,7 @@ export function Lists({lists, setLists, actualList, setActualList}) {
   }
 
   return (
-    <div className="">
+    <div>
       <h2 className="block text-2xl text-white font-bold max-w-prose pt-6 px-4">
         Lists:
       </h2>
